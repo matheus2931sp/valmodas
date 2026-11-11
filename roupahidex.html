@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Val Modas • Boutique & Moda Feminina | Tucuruvi ZN</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#FDFBF7',
+                            card: '#FAF6F0',
+                            accent: '#C5A059',
+                            goldDark: '#9E7D3B',
+                            darkText: '#1C1917',
+                            muted: '#78716C',
+                            roseSoft: '#F5EBE6'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #FDFBF7;
+            color: #1C1917;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FDFBF7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        /* Glass Effect */
+        .glass-nav {
+            background: rgba(253, 251, 247, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .luxury-shadow {
+            box-shadow: 0 20px 40px -15px rgba(197, 160, 89, 0.12);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+
+    <!-- ANNOUNCEMENT BAR -->
+    <div class="bg-[#1C1917] text-[#C5A059] text-[11px] font-medium tracking-widest uppercase py-2 px-4 text-center flex items-center justify-center gap-2">
+        <i class="fa-solid fa-sparkles text-xs"></i>
+        <span>Atendimento VIP & Envio Rápido para a Zona Norte e toda São Paulo</span>
+        <i class="fa-solid fa-sparkles text-xs"></i>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-[#C5A059]/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+            
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full border border-[#C5A059] flex items-center justify-center text-[#C5A059] font-serif font-bold text-xl bg-[#FAF6F0]">
+                    V
+                </div>
+                <div>
+                    <h1 class="font-serif font-bold text-xl sm:text-2xl text-[#1C1917] tracking-wide">
+                        VAL MODAS
+                    </h1>
+                    <p class="text-[10px] text-[#78716C] tracking-widest uppercase">Boutique & Moda Feminina • Tucuruvi</p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/5511983791981?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20peças%20da%20Val%20Modas." 
+                   target="_blank" 
+                   class="hidden md:flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-full border border-[#C5A059] text-[#1C1917] hover:bg-[#C5A059] hover:text-white transition-all duration-300">
+                    <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
+                    <span>Falar na Loja</span>
+                </a>
+
+                <!-- Cart Button -->
+                <button onclick="toggleBagModal()" class="relative bg-[#1C1917] text-[#FAF6F0] p-2.5 sm:px-4 sm:py-2.5 rounded-full hover:bg-[#C5A059] transition-all duration-300 flex items-center gap-2 shadow-sm">
+                    <i class="fa-solid fa-bag-shopping text-base text-[#C5A059]"></i>
+                    <span class="hidden sm:inline text-xs font-medium uppercase tracking-wider">Minha Sacola</span>
+                    <span id="bag-badge" class="bg-[#C5A059] text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative bg-gradient-to-b from-[#FAF6F0] via-[#FDFBF7] to-[#FDFBF7] py-12 sm:py-16 border-b border-[#C5A059]/15">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FAF6F0] border border-[#C5A059]/30 text-[#9E7D3B] text-xs font-semibold tracking-wider uppercase">
+                        <i class="fa-solid fa-gem text-xs"></i> Nova Coleção Primavera / Verão
+                    </div>
+
+                    <h2 class="text-4xl sm:text-6xl font-serif font-bold text-[#1C1917] leading-tight">
+                        Elegância, Caimento Perfeito & <span class="italic text-[#C5A059]">Estilo Exclusivo</span>
+                    </h2>
+
+                    <p class="text-[#78716C] text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
+                        Descubra o melhor da moda feminina no Tucuruvi. Peças selecionadas a dedo para valorizar sua beleza com sofisticação e conforto em todas as ocasiões.
+                    </p>
+
+                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#vitrine" class="w-full sm:w-auto bg-[#1C1917] hover:bg-[#C5A059] text-white px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 text-center luxury-shadow">
+                            Ver Coleção Completa
+                        </a>
+                        <a href="https://wa.me/5511983791981?text=Olá,%20vim%20pelo%20site%20da%20Val%20Modas%20e%20gostaria%20de%20um%20atendimento%20personalizado!" 
+                           target="_blank" 
+                           class="w-full sm:w-auto border border-[#C5A059] hover:bg-[#FAF6F0] text-[#1C1917] px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 text-center flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-emerald-600 text-base"></i>
+                            Atendimento Personalizado
+                        </a>
+                    </div>
+
+                    <!-- Badges -->
+                    <div class="pt-6 grid grid-cols-3 gap-4 border-t border-[#C5A059]/20 max-w-md mx-auto lg:mx-0 text-center">
+                        <div>
+                            <span class="block font-serif font-bold text-xl text-[#1C1917]">5.0 ★</span>
+                            <span class="text-[11px] text-[#78716C]">Avaliação Clientes</span>
+                        </div>
+                        <div>
+                            <span class="block font-serif font-bold text-xl text-[#1C1917]">100%</span>
+                            <span class="text-[11px] text-[#78716C]">Qualidade Premium</span>
+                        </div>
+                        <div>
+                            <span class="block font-serif font-bold text-xl text-[#1C1917]">ZN SP</span>
+                            <span class="text-[11px] text-[#78716C]">Tucuruvi & Região</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image Grid -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-full max-w-md bg-[#FAF6F0] p-3 rounded-3xl border border-[#C5A059]/30 luxury-shadow">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" 
+                             alt="Moda Feminina Val Modas" 
+                             class="rounded-2xl w-full h-[420px] object-cover">
+                        <div class="absolute bottom-6 left-6 right-6 bg-[#FDFBF7]/90 backdrop-blur-md p-4 rounded-xl border border-[#C5A059]/20 flex items-center justify-between shadow-lg">
+                            <div>
+                                <p class="text-[10px] text-[#9E7D3B] font-bold uppercase tracking-wider">Destaque Boutique</p>
+                                <h3 class="font-serif text-[#1C1917] font-bold text-base">Conjunto Alfaiataria Premium</h3>
+                            </div>
+                            <span class="text-xs font-bold text-[#C5A059] bg-[#FAF6F0] px-3 py-1 rounded-full border border-[#C5A059]/20">Tucuruvi</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORY FILTER TABS -->
+    <section id="vitrine" class="sticky top-[73px] z-30 bg-[#FDFBF7]/95 backdrop-blur-md py-4 border-b border-[#C5A059]/15 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1" id="category-tabs">
+                <!-- Categories loaded via Javascript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS GALLERY -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex-grow">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-2">
+            <div>
+                <span class="text-xs text-[#9E7D3B] font-semibold uppercase tracking-widest block">Catálogo Exclusivo</span>
+                <h2 id="current-category-title" class="text-2xl sm:text-3xl font-serif font-bold text-[#1C1917]">
+                    Lançamentos da Estação
+                </h2>
+            </div>
+            <p id="product-count-badge" class="text-xs text-[#78716C] font-medium">
+                Exibindo peças selecionadas
+            </p>
+        </div>
+
+        <!-- Products Grid Container -->
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- Dynamic product cards injected via JS -->
+        </div>
+    </main>
+
+    <!-- PROOF / ABOUT SECTION -->
+    <section class="bg-[#FAF6F0] py-14 border-t border-[#C5A059]/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <div class="bg-[#FDFBF7] p-6 rounded-2xl border border-[#C5A059]/20 space-y-3">
+                    <div class="w-10 h-10 rounded-full bg-[#FAF6F0] border border-[#C5A059]/40 flex items-center justify-center text-[#C5A059]">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg text-[#1C1917]">Atendimento Personalizado</h3>
+                    <p class="text-xs text-[#78716C] leading-relaxed">
+                        Ajudamos você a encontrar a peça perfeita para o seu corpo e estilo. Atendimento VIP diretamente pelo WhatsApp da loja.
+                    </p>
+                </div>
+
+                <div class="bg-[#FDFBF7] p-6 rounded-2xl border border-[#C5A059]/20 space-y-3">
+                    <div class="w-10 h-10 rounded-full bg-[#FAF6F0] border border-[#C5A059]/40 flex items-center justify-center text-[#C5A059]">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg text-[#1C1917]">Localização no Tucuruvi</h3>
+                    <p class="text-xs text-[#78716C] leading-relaxed">
+                        Loja física situada na região do Tucuruvi, Zona Norte de São Paulo. Venha nos visitar ou receba via delivery rápido.
+                    </p>
+                </div>
+
+                <div class="bg-[#FDFBF7] p-6 rounded-2xl border border-[#C5A059]/20 space-y-3">
+                    <div class="w-10 h-10 rounded-full bg-[#FAF6F0] border border-[#C5A059]/40 flex items-center justify-center text-[#C5A059]">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <h3 class="font-serif font-bold text-lg text-[#1C1917]">Satisfação Garantida</h3>
+                    <p class="text-xs text-[#78716C] leading-relaxed">
+                        Tecidos nobres, acabamento impecável e alta durabilidade em cada modelo para você brilhar com elegância.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOATING BAG BAR (MOBILE ONLY) -->
+    <div id="floating-bag-bar" class="fixed bottom-4 left-4 right-4 z-40 sm:hidden transform translate-y-32 transition-transform duration-300">
+        <div class="bg-[#1C1917] text-[#FDFBF7] rounded-full p-4 shadow-2xl flex items-center justify-between" onclick="toggleBagModal()">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-[#C5A059] text-white flex items-center justify-center font-bold text-sm">
+                    <span id="floating-bag-count">0</span>
+                </div>
+                <div>
+                    <span class="text-[10px] text-[#C5A059] uppercase tracking-wider block font-bold">Ver Sacola</span>
+                    <span id="floating-bag-total" class="text-sm font-bold">R$ 0,00</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#C5A059] pr-2">
+                <span>Finalizar</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- BAG & CHECKOUT MODAL -->
+    <div id="bag-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="w-full max-w-md bg-[#FDFBF7] h-full flex flex-col justify-between shadow-2xl border-l border-[#C5A059]/20 transform translate-x-full transition-transform duration-300" id="bag-drawer">
+            
+            <!-- Modal Header -->
+            <div class="p-5 border-b border-[#C5A059]/20 flex items-center justify-between bg-[#FAF6F0]">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-[#1C1917] text-[#C5A059] flex items-center justify-center">
+                        <i class="fa-solid fa-bag-shopping text-sm"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-serif font-bold text-[#1C1917] text-base">Sua Sacola de Escolhas</h3>
+                        <p class="text-[11px] text-[#78716C]">Val Modas • Tucuruvi ZN</p>
+                    </div>
+                </div>
+                <button onclick="toggleBagModal()" class="w-8 h-8 rounded-full bg-white text-[#78716C] hover:text-[#1C1917] flex items-center justify-center shadow-sm border border-[#C5A059]/20">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-5 overflow-y-auto flex-grow space-y-5">
+                <!-- Cart Items Container -->
+                <div id="bag-items-container" class="space-y-3">
+                    <!-- Injected via JS -->
+                </div>
+
+                <!-- Customer Form -->
+                <div class="space-y-3 pt-4 border-t border-[#C5A059]/20">
+                    <label class="block text-xs font-bold uppercase tracking-wider text-[#9E7D3B]">Seus Dados para Atendimento</label>
+                    <input type="text" id="customer-name" placeholder="Seu Nome Completo *" class="w-full bg-[#FAF6F0] border border-[#C5A059]/30 rounded-xl px-4 py-2.5 text-xs text-[#1C1917] placeholder-[#78716C] focus:outline-none focus:border-[#C5A059]">
+                    <textarea id="customer-obs" rows="2" placeholder="Dúvidas de tamanho ou preferências de cor?" class="w-full bg-[#FAF6F0] border border-[#C5A059]/30 rounded-xl px-4 py-2.5 text-xs text-[#1C1917] placeholder-[#78716C] focus:outline-none focus:border-[#C5A059]"></textarea>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="p-5 border-t border-[#C5A059]/20 bg-[#FAF6F0] space-y-3">
+                <div class="flex justify-between items-center text-sm font-bold text-[#1C1917]">
+                    <span>Subtotal Estimado</span>
+                    <span id="bag-total-summary" class="text-base text-[#9E7D3B] font-serif">R$ 0,00</span>
+                </div>
+                <p class="text-[10px] text-[#78716C]">
+                    Ao clicar no botão abaixo, a lista com suas peças selecionadas será enviada diretamente para a consultora da Val Modas no WhatsApp.
+                </p>
+                <button onclick="sendWhatsAppBag()" class="w-full bg-emerald-700 hover:bg-emerald-600 text-white font-bold py-3.5 px-4 rounded-xl text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 shadow-md">
+                    <i class="fa-brands fa-whatsapp text-lg"></i>
+                    <span>Consultar Peças no WhatsApp</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#1C1917] text-[#FAF6F0] py-12 border-t border-[#C5A059]/30 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full border border-[#C5A059] text-[#C5A059] flex items-center justify-center font-serif font-bold">
+                            V
+                        </div>
+                        <span class="font-serif font-bold text-lg text-white">VAL MODAS</span>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed text-[11px]">
+                        Moda feminina elegante, moderna e de caimento impecável no Tucuruvi, Zona Norte de São Paulo.
+                    </p>
+                </div>
+
+                <div class="space-y-2">
+                    <h4 class="font-serif font-bold text-[#C5A059] text-sm uppercase tracking-wider">Contato & Localização</h4>
+                    <p class="text-gray-300 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-[#C5A059]"></i>
+                        Tucuruvi - Zona Norte, São Paulo - SP
+                    </p>
+                    <p class="text-gray-300 flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-500"></i>
+                        (11) 98379-1981
+                    </p>
+                    <p class="text-gray-300 flex items-center gap-2">
+                        <i class="fa-solid fa-clock text-[#C5A059]"></i>
+                        Segunda a Sábado: 09h às 19h
+                    </p>
+                </div>
+
+                <div class="space-y-3">
+                    <h4 class="font-serif font-bold text-[#C5A059] text-sm uppercase tracking-wider">Atendimento Rápido</h4>
+                    <a href="https://wa.me/5511983791981?text=Olá!%20Gostaria%20de%20tirar%20uma%20dúvida%20sobre%20as%20roupas." 
+                       target="_blank" 
+                       class="inline-flex items-center gap-2 bg-[#FAF6F0]/10 hover:bg-[#C5A059] hover:text-white border border-[#C5A059]/40 text-[#C5A059] px-4 py-2.5 rounded-full transition duration-300">
+                        <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                        <span>Iniciar Conversa no WhatsApp</span>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="pt-6 border-t border-white/10 text-center text-gray-500 text-[11px]">
+                <p>&copy; 2026 Val Modas Tucuruvi. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Products Database
+        const products = [
+            {
+                id: 1,
+                name: "Vestido Midi Alfaiataria Nude Elegance",
+                category: "vestidos",
+                categoryName: "👗 Vestidos",
+                price: 189.90,
+                description: "Vestido midi com decote estruturado, caimento impecável e tecido nobre com toque macio.",
+                image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=600&q=80",
+                badge: "Mais Desejado"
+            },
+            {
+                id: 2,
+                name: "Conjunto Pantalona & Top Regata Marrom",
+                category: "conjuntos",
+                categoryName: "✨ Conjuntos",
+                price: 219.90,
+                description: "Conjunto fluido em tom marrom nobre, calça pantalona com bolso faca e cropped alça larga.",
+                image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&q=80",
+                badge: "Destaque ZN"
+            },
+            {
+                id: 3,
+                name: "Vestido Longo Plissado Off-White VIP",
+                category: "vestidos",
+                categoryName: "👗 Vestidos",
+                price: 249.90,
+                description: "Vestido longo plissado sofisticado, perfeito para eventos, festas e momentos especiais.",
+                image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80",
+                badge: "Edição Limitada"
+            },
+            {
+                id: 4,
+                name: "Blusa Regata Canelada Gola Alta Dourada",
+                category: "blusas",
+                categoryName: "👔 Blusas & Tops",
+                price: 89.90,
+                description: "Top gola alta em malha canelada de alta densidade. Combina perfeitamente com blazer ou jeans.",
+                image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80",
+                badge: "Essencial"
+            },
+            {
+                id: 5,
+                name: "Conjunto Blazer & Short Alfaiataria Bege",
+                category: "conjuntos",
+                categoryName: "✨ Conjuntos",
+                price: 239.90,
+                description: "Look moderno e elegante com blazer bem cortado e short de alfaiataria cintura alta.",
+                image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&q=80",
+                badge: "Tendência"
+            },
+            {
+                id: 6,
+                name: "Vestido Tubinho Fenda Lateral Preto Chic",
+                category: "vestidos",
+                categoryName: "👗 Vestidos",
+                price: 179.90,
+                description: "Tubinho clássico moderno com sutil fenda lateral que traz charme extra na medida certa.",
+                image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?auto=format&fit=crop&w=600&q=80",
+                badge: "Clássico"
+            },
+            {
+                id: 7,
+                name: "Blusa Cetim com Amarração no Pescoço",
+                category: "blusas",
+                categoryName: "👔 Blusas & Tops",
+                price: 119.90,
+                description: "Blusa de cetim toque de seda com brilho discreto e laço elegante na gola.",
+                image: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=600&q=80",
+                badge: "Sofisticado"
+            },
+            {
+                id: 8,
+                name: "Macacão Utilitário Ajustável Terracota",
+                category: "lancamentos",
+                categoryName: "🔥 Lançamentos",
+                price: 229.90,
+                description: "Macacão com faixa na cintura e caimento impecável para alongar a silhueta.",
+                image: "https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=600&q=80",
+                badge: "Novo"
+            }
+        ];
+
+        // Categories List
+        const categories = [
+            { id: "lancamentos", label: "🔥 Lançamentos" },
+            { id: "vestidos", label: "👗 Vestidos" },
+            { id: "conjuntos", label: "✨ Conjuntos" },
+            { id: "blusas", label: "👔 Blusas & Tops" }
+        ];
+
+        // State Management
+        let activeCategory = "lancamentos";
+        let bag = [];
+        const shopPhone = "5511983791981";
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCategoryTabs();
+            renderProducts();
+            updateBagUI();
+        });
+
+        // Render Tabs
+        function renderCategoryTabs() {
+            const container = document.getElementById('category-tabs');
+            container.innerHTML = categories.map(cat => `
+                <button onclick="selectCategory('${cat.id}')" class="px-5 py-2.5 rounded-full font-semibold text-xs uppercase tracking-wider transition-all duration-300 border ${
+                    activeCategory === cat.id 
+                    ? 'bg-[#1C1917] text-[#FAF6F0] border-[#1C1917] shadow-sm' 
+                    : 'bg-[#FAF6F0] text-[#78716C] border-[#C5A059]/30 hover:border-[#C5A059] hover:text-[#1C1917]'
+                }">
+                    ${cat.label}
+                </button>
+            `).join('');
+        }
+
+        // Change Category
+        function selectCategory(catId) {
+            activeCategory = catId;
+            renderCategoryTabs();
+            renderProducts();
+            
+            const catObj = categories.find(c => c.id === catId);
+            document.getElementById('current-category-title').innerText = catObj ? catObj.label : 'Catálogo';
+        }
+
+        // Render Products
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            const filtered = products.filter(p => p.category === activeCategory || activeCategory === 'lancamentos');
+
+            document.getElementById('product-count-badge').innerText = `${filtered.length} modelos disponíveis`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-[#78716C]">Nenhuma peça nesta categoria no momento.</div>`;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(product => {
+                const inBag = bag.find(item => item.id === product.id);
+
+                return `
+                <div class="bg-[#FAF6F0] rounded-2xl overflow-hidden border border-[#C5A059]/20 hover:border-[#C5A059] transition-all duration-300 flex flex-col justify-between group luxury-shadow">
+                    <div>
+                        <!-- Image -->
+                        <div class="relative h-72 overflow-hidden bg-white">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            ${product.badge ? `<span class="absolute top-3 right-3 bg-[#1C1917] text-[#C5A059] text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md border border-[#C5A059]/30">${product.badge}</span>` : ''}
+                        </div>
+                        
+                        <!-- Details -->
+                        <div class="p-5 space-y-2">
+                            <h3 class="font-serif font-bold text-[#1C1917] text-base leading-snug">${product.name}</h3>
+                            <p class="text-[#78716C] text-xs line-clamp-2 leading-relaxed">${product.description}</p>
+                        </div>
+                    </div>
+
+                    <!-- Price & Actions -->
+                    <div class="p-5 pt-0 border-t border-[#C5A059]/10 mt-2 pt-4 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] text-[#78716C] uppercase font-bold tracking-wider">Valor</span>
+                            <span class="text-[#9E7D3B] font-serif font-bold text-lg">R$ ${product.price.toFixed(2).replace('.', ',')}</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2">
+                            <button onclick="addToBag(${product.id})" class="bg-[#FAF6F0] hover:bg-[#1C1917] hover:text-[#C5A059] text-[#1C1917] border border-[#C5A059]/40 font-bold text-[11px] py-2.5 px-2 rounded-xl transition duration-300 flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-bag-shopping"></i>
+                                <span>${inBag ? 'Adicionada' : '+ Sacola'}</span>
+                            </button>
+                            
+                            <button onclick="directWhatsAppProduct('${product.name}', '${product.price.toFixed(2).replace('.', ',')}')" class="bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-[11px] py-2.5 px-2 rounded-xl transition duration-300 flex items-center justify-center gap-1">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span>Consultar</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        // Direct WhatsApp Item Link
+        function directWhatsAppProduct(productName, productPrice) {
+            const message = `Olá! Tenho interesse na peça *${productName}* (R$ ${productPrice}) vista no site da Val Modas. Gostaria de saber se tem meu tamanho disponível!`;
+            window.open(`https://wa.me/${shopPhone}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Add to Bag
+        function addToBag(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = bag.find(item => item.id === productId);
+
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                bag.push({ ...product, quantity: 1 });
+            }
+
+            updateBagUI();
+            renderProducts();
+        }
+
+        // Update Bag Quantity
+        function updateBagQuantity(productId, delta) {
+            const idx = bag.findIndex(item => item.id === productId);
+            if (idx > -1) {
+                bag[idx].quantity += delta;
+                if (bag[idx].quantity <= 0) {
+                    bag.splice(idx, 1);
+                }
+            }
+            updateBagUI();
+            renderProducts();
+        }
+
+        // Update Bag UI Components
+        function updateBagUI() {
+            const totalCount = bag.reduce((sum, i) => sum + i.quantity, 0);
+            const totalSum = bag.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+
+            document.getElementById('bag-badge').innerText = totalCount;
+            document.getElementById('floating-bag-count').innerText = totalCount;
+            document.getElementById('floating-bag-total').innerText = `R$ ${totalSum.toFixed(2).replace('.', ',')}`;
+            document.getElementById('bag-total-summary').innerText = `R$ ${totalSum.toFixed(2).replace('.', ',')}`;
+
+            const floatingBar = document.getElementById('floating-bag-bar');
+            if (totalCount > 0) {
+                floatingBar.classList.remove('translate-y-32');
+            } else {
+                floatingBar.classList.add('translate-y-32');
+            }
+
+            const container = document.getElementById('bag-items-container');
+            if (bag.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-10 space-y-2">
+                        <i class="fa-solid fa-bag-shopping text-gray-300 text-3xl"></i>
+                        <p class="text-xs text-[#78716C]">Sua sacola de atendimento está vazia.</p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = bag.map(item => `
+                    <div class="flex items-center justify-between bg-[#FAF6F0] p-3 rounded-xl border border-[#C5A059]/20">
+                        <div class="flex items-center gap-3">
+                            <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded-lg object-cover">
+                            <div>
+                                <h4 class="font-serif font-bold text-xs text-[#1C1917]">${item.name}</h4>
+                                <span class="text-[#9E7D3B] text-xs font-bold">R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2 bg-white border border-[#C5A059]/30 rounded-lg p-1">
+                            <button onclick="updateBagQuantity(${item.id}, -1)" class="w-5 h-5 rounded text-[#1C1917] flex items-center justify-center font-bold text-xs hover:bg-[#C5A059] hover:text-white transition">
+                                <i class="fa-solid fa-minus text-[9px]"></i>
+                            </button>
+                            <span class="font-bold text-xs text-[#1C1917] px-1">${item.quantity}</span>
+                            <button onclick="updateBagQuantity(${item.id}, 1)" class="w-5 h-5 rounded text-[#1C1917] flex items-center justify-center font-bold text-xs hover:bg-[#C5A059] hover:text-white transition">
+                                <i class="fa-solid fa-plus text-[9px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Toggle Bag Drawer
+        function toggleBagModal() {
+            const modal = document.getElementById('bag-modal');
+            const drawer = document.getElementById('bag-drawer');
+
+            if (modal.classList.contains('opacity-0')) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                drawer.classList.add('translate-x-full');
+                modal.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        // Send Bag List to WhatsApp 11983791981
+        function sendWhatsAppBag() {
+            if (bag.length === 0) {
+                alert("Adicione peças à sua sacola antes de consultar a loja.");
+                return;
+            }
+
+            const name = document.getElementById('customer-name').value.trim();
+            const obs = document.getElementById('customer-obs').value.trim();
+
+            let text = `✨ *SOLICITAÇÃO DE ATENDIMENTO - VAL MODAS (TUCURUVI)*\n`;
+            text += `-------------------------------------------\n`;
+            if (name) text += `👤 *Cliente:* ${name}\n`;
+            text += `📍 *Origem:* Vitrine Virtual Tucuruvi\n`;
+            text += `-------------------------------------------\n`;
+            text += `🛍️ *PEÇAS SELECIONADAS:*\n\n`;
+
+            const total = bag.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+
+            bag.forEach(item => {
+                text += `• ${item.quantity}x ${item.name} - R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n`;
+            });
+
+            text += `\n-------------------------------------------\n`;
+            text += `💰 *Subtotal Estimado:* R$ ${total.toFixed(2).replace('.', ',')}\n`;
+
+            if (obs) {
+                text += `-------------------------------------------\n`;
+                text += `📝 *Observações/Tamanhos:* ${obs}\n`;
+            }
+
+            text += `-------------------------------------------\n`;
+            text += `Gostaria de verificar a disponibilidade dos tamanhos e formas de envio! 💕`;
+
+            window.open(`https://wa.me/${shopPhone}?text=${encodeURIComponent(text)}`, '_blank');
+        }
+    </script>
+</body>
+</html>
